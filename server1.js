@@ -13,7 +13,9 @@ var port = process.env.OPENSHIFT_NODEJS_PORT || 4000;
 
 var connectionString = "mongodb://admin:ieJrVhrTNTaL@127.5.80.2:27017/cs56101";
 
-
+if (process.env.OPENSHIFT_MONGODB_DB_URL == undefined) {
+	connectionString = "localhost:27018/cs56101";
+}
 
 
 
