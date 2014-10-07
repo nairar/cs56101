@@ -33,7 +33,7 @@ app.get('/employees', function(req, res) {
 	db.db1.find({}, function (err, docs) {
 		if (err) console.log(err);
 		console.log(connectionString);
-		console.log(docs);
+		console.dir(docs);
 		
 		res.json({employees: docs});
 	});
