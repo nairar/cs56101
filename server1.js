@@ -16,6 +16,9 @@ var connectionString = "mongodb://admin:ieJrVhrTNTaL@127.5.80.2:27017/" + proces
 if (process.env.OPENSHIFT_MONGODB_DB_URL == undefined) {
 	connectionString = "localhost:27018/cs56101";
 }
+
+
+
 var db = mongojs(connectionString, ['db1']);
 
 app.get('/env', function(req, res) {
@@ -28,9 +31,10 @@ app.get('/hello', function(req, res) {
 
 app.get('/employees', function(req, res) {
 	var emps = null;
-	
+
 	db.db1.find({}).toArray(function (err, docs) {
 		if (err) console.log(err);
+		console.log(connectionString);
 		console.log(docs);
 		
 		res.send({employees: docs});
