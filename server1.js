@@ -3,6 +3,7 @@ var express  = require('express');
 var mongojs = require('mongojs');
 var bodyParser = require('body-parser');
 var app = express();
+var application = require('./public/js/Week4/services/serveRequests.js');
 
 app.use(express.static(__dirname + '/public'));
 app.use(express.bodyParser());
@@ -21,26 +22,7 @@ if (process.env.OPENSHIFT_MONGODB_DB_URL == undefined) {
 
 var db = mongojs(connectionString, ['db1']);
 
-app.get('/env', function(req, res) {
-	res.json(process.env);
-});
-
-app.get('/hello', function(req, res) {
-	res.send("Hello World!");
-});
-
-app.get('/employees', function(req, res) {
-	
-
-	db.db1.find(function (err, docs) {
-		if (err) console.log(err);
-		console.log(connectionString);
-		console.dir(docs);
-		
-		res.json({employees: docs});
-	});
-
-});
+application(app, mongojs, db);
 
 
 

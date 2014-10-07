@@ -13,6 +13,11 @@ function TableController($scope, $http) {
         
     });
 
+    $http.post(url).success(function (res, err) {
+        if (err) console.log(err);
+        $scope.all;
+    });
+
    
 
 };
