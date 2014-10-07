@@ -35,7 +35,7 @@ app.get('/employees', function(req, res) {
 		console.log(connectionString);
 		console.log(docs);
 		
-		res.send({employees: docs});
+		res.json({employees: docs});
 	});
 
 });
