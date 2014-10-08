@@ -1,5 +1,5 @@
 ﻿
-app.controller("TableController", function($scope, $http) {
+app.controller("TableController", ["$scope", "$http",function($scope, $http) {
     var url = '/employees/data';
     $scope.renderClient = function(res) {
         console.log("Employees are " + res.employees);
@@ -35,4 +35,4 @@ app.controller("TableController", function($scope, $http) {
     }
     
     $scope.all();
-});
+}]);
