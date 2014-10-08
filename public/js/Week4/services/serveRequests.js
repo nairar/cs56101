@@ -17,7 +17,7 @@ var application = function (app, mongojs, db) {
 			if (err) console.log(err);
 			console.log(docs);
 			res.json({employees : docs});
-			db.db1.close();
+			
 		});
 	});
 
@@ -26,7 +26,7 @@ var application = function (app, mongojs, db) {
 		db.db1.find({_id : mongojs.ObjectId(empId)}, function (err, doc) {
 			if (err) console.log(err);
 			res.json({employee : doc});
-			db.db1.close();
+			
 		});
 	});
 
@@ -38,16 +38,24 @@ var application = function (app, mongojs, db) {
 				if (err) console.log(err);	
 				//console.dir(docs);
 				res.json({employees: docs});
-				db.db1.close();
+				
 			});
 		});
 	});
 
 	app.put('/employees/:id', function (req, res) {
-		db.db1.findAndModify({ query: {_id : mongojs.ObjectId(req.params.id)}}, {"name" : req.params.name}, function (err, doc) {
+		console.log(req.body);
+		db.db1.update({"_id" : mongojs.ObjectId(req.params.id)}, { "name": req.body.name }, function (err, doc) {
 			if (err) console.log("Put error " + err);
 			res.json(doc);
-			db.db1.close();
+			
+		});
+	});
+
+	app.delete ('/employees/:id', function (req, res) {
+		db.db1.remove({_id : mongojs.ObjectId(req.params.id)}, function (err, doc) {
+			if (err) {console.log ("Delete error " + err);}
+			res.send(doc);
 		});
 	});
 }

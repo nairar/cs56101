@@ -18,8 +18,6 @@ if (process.env.OPENSHIFT_MONGODB_DB_URL == undefined) {
 	connectionString = "localhost:27018/cs56101";
 }
 
-
-
 var db = mongojs(connectionString, ['db1']);
 
 application(app, mongojs, db);
@@ -27,7 +25,7 @@ application(app, mongojs, db);
 
 app.all('*', function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Content-Type,X-Requested-With");
+  res.header("Access-Control-Allow-Headers", "Content-Type,X-Requested-With, Content-Type, Accept");
   next();
  });
 

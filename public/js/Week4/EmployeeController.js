@@ -16,13 +16,18 @@ app.controller("TableController", function($scope, $http) {
 
    $scope.update = function() {
     $http.put ('/employees/'+$scope.newEmployee._id, $scope.newEmployee).success(function (res) {
-        if (err) console.log (err);
-        $scope.all();
+        $scope.newEmployee = res;
     });
    }
 
    $scope.select = function(employee) {
         $scope.newEmployee = employee;
+   }
+
+   $scope.delete = function (id) {
+    $http.delete('/employees/'+id).success(function (req, res) {
+        $scope.all();
+    });
    }
 
     $scope.all = function() {
