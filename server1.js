@@ -9,9 +9,8 @@ var application = require('./public/js/Week4/services/serveRequests.js');
 app.use(express.static(__dirname + '/public'));
 app.use(express.bodyParser());
 
-
 var ip = process.env.OPENSHIFT_NODEJS_IP;
-var port = process.env.OPENSHIFT_NODEJS_PORT || 4000;
+var port = process.env.OPENSHIFT_NODEJS_PORT || 4001;
 
 var connectionString = "mongodb://admin:ieJrVhrTNTaL@127.5.80.2:27017/cs56101";
 
@@ -24,6 +23,13 @@ if (process.env.OPENSHIFT_MONGODB_DB_URL == undefined) {
 var db = mongojs(connectionString, ['db1']);
 
 application(app, mongojs, db);
+
+
+app.all('*', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Content-Type,X-Requested-With");
+  next();
+ });
 
 
 

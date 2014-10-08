@@ -14,6 +14,17 @@ app.controller("TableController", function($scope, $http) {
     });
    }
 
+   $scope.update = function() {
+    $http.put ('/employees/'+$scope.newEmployee._id, $scope.newEmployee).success(function (res) {
+        if (err) console.log (err);
+        $scope.all();
+    });
+   }
+
+   $scope.select = function(employee) {
+        $scope.newEmployee = employee;
+   }
+
     $scope.all = function() {
         $http.get(url).success($scope.renderClient);
     }

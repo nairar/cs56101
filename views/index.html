@@ -53,11 +53,14 @@
                 </tr>
                 <tr>
                     <th>
-                        <input class="form-control" ng-model="employee.name" placeholder="Enter name" />
+                        <input class="form-control ng-valid ng-dirty" ng-model="newEmployee.name" placeholder="Enter name"/>
                     </th>
                     <th>
-                        <button class="btn btn-success" ng-click="add(employee)">
+                        <button class="btn btn-success" ng-click="add(newEmployee)">
                             Add
+                        </button>
+                        <button class="btn btn-primary" ng-click="update()">
+                            Update
                         </button>
                     </th>
                 </tr>
@@ -67,6 +70,10 @@
                     <td>
                         {{employee.name}}
                     </td>
+                    <th>
+                        <button class="btn btn-primary" ng-click="select(employee)">Select</button>
+                        <button class="btn btn-danger" ng-click="delete(employee._id)">Delete</button>
+                    </th>
                 </tr>
             </tbody>
         </table>
