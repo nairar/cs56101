@@ -1,5 +1,5 @@
 ﻿
-app.controller("TableController", ["$scope", "$http",function($scope, $http) {
+app.controller("TableController", ["$scope", "$http", "AppService", function($scope, $http, AppService) {
     var url = '/employees/data';
     $scope.renderClient = function(res) {
         console.log("Employees are " + res.employees);
@@ -8,30 +8,30 @@ app.controller("TableController", ["$scope", "$http",function($scope, $http) {
     }
 
    $scope.add = function (employee) {
-     $http.post(url, employee).success(function (res, err) {
-        if (err) console.log(err);
-        $scope.employees = res.employees;
-    });
+     AppService.create(employee, $scope.all);
    }
 
    $scope.update = function() {
-    $http.put ('/employees/'+$scope.newEmployee._id, $scope.newEmployee).success(function (res) {
-        $scope.newEmployee = res;
-    });
+    
+    AppService.update($scope.newEmployee._id, $scope.newEmployee, $scope.all);
+
    }
 
    $scope.select = function(employee) {
-        $scope.newEmployee = employee;
+        /*$scope.newEmployee = employee;*/
+        AppService.selectOne(employee._id, function (res) {
+            console.log(res.employee[0].name);
+            $scope.newEmployee = res.employee[0];
+        });
    }
 
    $scope.delete = function (id) {
-    $http.delete('/employees/'+id).success(function (req, res) {
-        $scope.all();
-    });
+        AppService.remove(id, $scope.all);
    }
 
     $scope.all = function() {
-        $http.get(url).success($scope.renderClient);
+        /*$http.get(url).success($scope.renderClient);*/
+        AppService.selectAll($scope.renderClient);
     }
     
     $scope.all();

@@ -25,6 +25,7 @@ var application = function (app, mongojs, db) {
 		var empId = req.params.id;
 		db.db1.find({_id : mongojs.ObjectId(empId)}, function (err, doc) {
 			if (err) console.log(err);
+			
 			res.json({employee : doc});
 			
 		});
