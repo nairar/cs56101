@@ -9,7 +9,7 @@ var application = function (app, mongojs, db) {
 	});
 
 	app.get('/employees', function(req, res) {
-		res.sendfile('./views/index.html');
+		res.sendfile('./public/views/index.html');
 	});
 
 	app.get('/employees/data', function (req, res) {
@@ -25,7 +25,7 @@ var application = function (app, mongojs, db) {
 		var empId = req.params.id;
 		db.db1.find({_id : mongojs.ObjectId(empId)}, function (err, doc) {
 			if (err) console.log(err);
-			
+
 			res.json({employee : doc});
 			
 		});
