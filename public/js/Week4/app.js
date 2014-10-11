@@ -1,13 +1,13 @@
-var app = angular.module('App', ["ngRoute"]);
+var app = angular.module('App',[]);
 
-app.config(['$routeProvider', function($routeProvider){
+/*app.config(['$routeProvider', function($routeProvider){
 	$routeProvider
 	.when ('/employees', {
 		templateUrl: './public/views/index.html',
 		controller: 'TableController'
 	});
 }]);
-
+*/
 app.factory("AppService", function ($http) {
 	var url = "/employees/data";
 	var create = function(employee, callback) {
