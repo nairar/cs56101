@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="ShoppingApp">
+<head>
+    <title>Hello World First NodeJS App</title>
+    <script src="js/angular.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/jquery-2.1.1.js"></script>
+    <link rel="stylesheet" href="bootstrap-3.2.0-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="cssMain/MainStyle.css" />
+    <link rel="stylesheet" href="css/Week8/shopping.css" />
+    <script src="js/Week8/ShoppingApp.js"></script>
+</head>
+<body>
+    <div class="container" ng-controller='ShoppingController'>
+    	<h2> Items </h2>
+    	<h4> (Select the items you want and click on "Add to Cart")</h4>
+
+    	<div class="cart">
+    		
+    	</div>
+    	<div>
+    		<button class="btn btn-primary" onclick="addToCart()">Add To Cart</button>
+    	</div>
+    	<span>
+	    	<div class="photos" ng-repeat="photo in photos">
+	    		<div class="photo">
+	    			<div class="desc">
+		    			<div class="details">{{photo.desc}}</div>
+		    			<div>
+		    				<input type="checkbox" class="check">
+		    				<label>Add</label>
+		    			</div>
+	    			</div>
+	    			<div class="image"><img src="{{photo.photo}}"/></div>
+	    		</div>
+
+	    	</div>
+    	</span>
+		
+  </div>
+
+  <script src="js/Week8/jquery/addItems.js"></script>
+  <script src="js/Week8/ShoppingController.js"></script>
+</body>
+</html>

@@ -59,6 +59,10 @@ var application = function (app, mongojs, db) {
 			res.send(doc);
 		});
 	});
+
+	app.get('/shopping', function (req, res) {
+		res.sendfile("./public/views/shopping.html");
+	});
 }
 
 module.exports = application;

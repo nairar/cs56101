@@ -1,0 +1,43 @@
+.cart {
+	width: 100%;
+	height: 200px;
+	border: 2px solid black;
+	display: inline-block;
+	box-shadow: 0 0 5px ;
+	background-color: silver;
+}
+
+
+
+.photo {
+	border: 2px solid #81a6c2;
+        display: inline-block;
+        width: 15%;
+        min-width: 280px;
+        height: 350px;
+        position: relative;
+        float: left;
+        margin-right: 20px;
+        margin-top: 20px;
+        overflow: hidden;
+        box-shadow: 0 0 10px;
+        background-color: #827f7f;
+        color: white;
+}
+
+.image {
+    width: 100%;
+    height: 80%;
+    display: inline-block;
+}
+
+.desc {
+	height: 20%;
+	font-weight: bold;
+    font-size: large;
+    font-family: Calibri;
+    padding-left: 2px;
+}
+
+
+
